@@ -1,0 +1,24 @@
+spring:
+  datasource:
+       mysql:
+          jdbc-url: jdbc:mysql://localhost:3306/system_demo?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=true
+          username: root
+          password: 563102
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          connection-timeout: 60000
+  redis:
+    host: 192.168.94.128
+    port: 6379
+    password: 563102
+    database: 0
+    timeout: 5000
+mybatis:
+  mapperLocations: classpath*:com/**/mapper/*.xml
+# spring-boot默认打印输出info级别以上的，可在此处修改输出级别
+server:
+  port: 8000
+logging:
+  file:
+    path: d:\\temp\logs
+  level:
+    root: info
