@@ -1,5 +1,6 @@
 package com.xu.systemdemo.base.config.redis;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,8 +18,6 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport{
-    //@Autowired
-    //private RedisProperties redisProperties;
     /**
      * retemplate相关配置
      * @param redisConnectionFactory
@@ -26,10 +25,8 @@ public class RedisConfig extends CachingConfigurerSupport{
      */
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         // 配置连接工厂
-        redisConnectionFactory.getClusterConnection().
         template.setConnectionFactory(redisConnectionFactory);
         //使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值（默认使用JDK的序列化方式）
         Jackson2JsonRedisSerializer jacksonSeial = new Jackson2JsonRedisSerializer(Object.class);

@@ -1,4 +1,15 @@
 spring:
+  kafka:
+      bootstrap-servers: 192.168.94.128:9092
+      producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      consumer:
+        group-id: test
+        enable-auto-commit: true
+        auto-commit-interval: 1000
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
   datasource:
        mysql:
           jdbc-url: jdbc:mysql://localhost:3306/system_demo?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=true
@@ -22,3 +33,7 @@ logging:
     path: d:\\temp\logs
   level:
     root: info
+    org:
+      springframework:
+        web: DEBUG
+    com.cet.diagsyscloud.system.dao: DEBUG
